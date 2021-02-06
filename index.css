@@ -1,3 +1,5 @@
+@import url('reset.css');
+
 *:focus {
     /* 기본적으로 focus적용되어 있음 */
     outline: none;
@@ -67,7 +69,7 @@
     text-decoration: none;
 }
 
---- @media only screen and (max-width:  768px) {
+@media only screen and (max-width:  768px) {
     body {
         display: grid;
         grid-template-rows: 60px 500px 1fr;
