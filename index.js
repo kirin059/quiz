@@ -23,7 +23,7 @@ function Question(text, choice, answer) {
     this.answer = answer; // 정답 정보
 }
 // Question 객체의 생성자 'new Question' 생성자 생성하기(코드의 재사용성)
-var questions = [
+let questions = [
     new Question("다음 중 과일이 아닌 것은?", ["파인애플", "딸기", "토마토", "사과"], "토마토"), //text, choice, answer 순으로 내용 넣기
     new Question("다음 중 키가 170cm 이하인 여배우는?", ["Blake Lively", "Julia Roberts", "Gwyneth Kate Paltrow", "Natalie Portman"], "Natalie Portman"),
     new Question('다음 중 배우 "이병헌"의 출연작이 아닌 것은?', ["공동경비구역 JSA", "누구나 비밀은 있다", "그 해 여름", "신세계"], "신세계"),
@@ -34,13 +34,13 @@ var questions = [
 ];
 
 // 퀴즈 객체 생성/ Quiz 생성자 만들고 quiz라고 이름짓기 (quiz객체 속성 복사 - score, questions, questionIndex)
-var quiz = new Quiz(questions);
+let quiz = new Quiz(questions);
 
 // 문제 출력 함수
 function updateQuiz() {
-    var question = document.getElementById("question");
-    var idx = quiz.questionIndex + 1; //문제 순서 , 총 7문제가 1번부터 1씩 추가
-    var choice = document.querySelectorAll(".btn"); //보기4개
+    let question = document.getElementById("question");
+    let idx = quiz.questionIndex + 1; //문제 순서 , 총 7문제가 1번부터 1씩 추가
+    let choice = document.querySelectorAll(".btn"); //보기4개
 
     // 문제 출력
     question.innerHTML = "문제" + idx + ") " + quiz.questions[quiz.questionIndex].text; //현재 출제되고 있는 문제 텍스트(배열)
@@ -51,13 +51,13 @@ function updateQuiz() {
     }
 }
 
-var btn = document.querySelectorAll(".btn"); //var idx는 updateQuiz안에 지정한 변수이기 때문에 함수 안에서만 사용 가능. 따라서 var btn변수를 전역변수로 함수 밖에서 다시 선언해줌
+let btn = document.querySelectorAll(".btn"); //var idx는 updateQuiz안에 지정한 변수이기 때문에 함수 안에서만 사용 가능. 따라서 var btn변수를 전역변수로 함수 밖에서 다시 선언해줌
 
 // 입력 및 정답 확인 함수
 function checkAnswer(i) {
     //checkAnswer함수에 btn[i]와 이벤트를 정의함으로서, 클릭하면 정답(answer)는 체크한 버튼(btn)이 된다고 함수 정의
     btn[i].addEventListener("click", function () {
-        var answer = btn[i].innerText;
+        let answer = btn[i].innerText;
 
         if (quiz.correctAnswer(answer)) {
             //클릭한 btn이 정답(correctAnswer)일 경우,
@@ -78,9 +78,9 @@ function checkAnswer(i) {
 }
 
 function result() {
-    var quizDiv = document.getElementById("quiz");
-    var per = parseInt((quiz.score * 100) / quiz.questions.length);
-    var txt = "<h1>결과</h1>" + '<h2 id="score">당신의 점수: ' + quiz.score + "/" + quiz.questions.length + "<br><br>" + per + "점" + "</h2>";
+    let quizDiv = document.getElementById("quiz");
+    let per = parseInt((quiz.score * 100) / quiz.questions.length);
+    let txt = "<h1>결과</h1>" + '<h2 id="score">당신의 점수: ' + quiz.score + "/" + quiz.questions.length + "<br><br>" + per + "점" + "</h2>";
 
     quizDiv.innerHTML = txt;
 
@@ -98,14 +98,14 @@ function result() {
     }
 }
 
-for (var i = 0; i < btn.length; i++) {
+for (let i = 0; i < btn.length; i++) {
     checkAnswer(i);
 }
 
 updateQuiz();
 
 //footer_dark mode
-var Body = {
+let Body = {
     setBackColor: function (color) {
         document.querySelector("body").style.backgroundColor = color;
     },
@@ -114,10 +114,10 @@ var Body = {
     },
 };
 
-var Link = {
+let Link = {
     setColor: function (color) {
-        var alist = document.querySelectorAll("a");
-        var i = 0;
+        let alist = document.querySelectorAll("a");
+        let i = 0;
         while (i < alist.length) {
             alist[i].style.color = color;
             i = i + 1;
@@ -126,7 +126,7 @@ var Link = {
 };
 
 function handler(self) {
-    var target = document.querySelector("body");
+    let target = document.querySelector("body");
     if (self.value === "night") {
         Body.setBackColor("black");
         Body.setColor("white");
