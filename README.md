@@ -1,4 +1,4 @@
-# quiz 만들
+# quiz 만들기
 ## javascript
 ---
 
